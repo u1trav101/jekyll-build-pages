@@ -17,9 +17,9 @@ if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$S
 fi
 
 # Install project dependencies
-if test -f /github/workspace/Gemfile then
+if test -f /github/workspace/Gemfile; then
   bundle install
-if test -f /github/workspace/package.json then
+if test -f /github/workspace/package.json; then
   npm install
 fi
 
