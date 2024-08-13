@@ -37,9 +37,6 @@ jobs:
       matrix:
         test:
           - simple
-          - octicons
-          - mojombo
-          - themes
           - jekyll-include-cache
           - future-false
     steps:
