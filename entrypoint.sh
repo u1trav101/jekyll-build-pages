@@ -9,7 +9,7 @@
 SOURCE_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_SOURCE
 DESTINATION_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_DESTINATION
 PAGES_GEM_HOME=$BUNDLE_APP_CONFIG
-GITHUB_PAGES_BIN=$PAGES_GEM_HOME/bin/jekyll
+GITHUB_PAGES_BIN=$PAGES_GEM_HOME/bin/github-pages
 
 # Check if Gemfile's dependencies are satisfied or print a warning
 if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$SOURCE_DIRECTORY/Gemfile"; then
@@ -52,7 +52,7 @@ fi
 { cd "$PAGES_GEM_HOME" || { echo "::error::pages gem not found"; exit 1; }; }
 
 # Run the command, capturing the output
-build_output="$($GITHUB_PAGES_BIN build "$VERBOSE" "$FUTURE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY")"
+build_output="$(jekyll build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY")"
 
 # Capture the exit code
 exit_code=$?
