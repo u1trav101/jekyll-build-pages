@@ -6,7 +6,8 @@ RUN apt-get update \
     build-essential \
     git \
     locales \
-    nodejs
+    nodejs \
+    npm
 
 COPY Gemfile Gemfile
 
