@@ -17,8 +17,11 @@ if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$S
 fi
 
 # Install project dependencies
-bundle install
-npm install
+if test -f /github/workspace/Gemfile then
+  bundle install
+if test -f /github/workspace/package.json then
+  npm install
+fi
 
 # Set environment variables required by supported plugins
 export JEKYLL_ENV="production"
