@@ -1,6 +1,6 @@
-name: 'Build Jekyll for GitHub Pages'
+name: 'Build Jekyll for GitHub Pages - u1trav101et fork'
 description: 'A simple GitHub Action for producing Jekyll build artifacts compatible with GitHub Pages'
-author: 'GitHub'
+author: 'u1trav101'
 inputs:
   source:
     description: 'Directory where the source files reside.'
@@ -28,4 +28,4 @@ inputs:
     default: ${{ github.token }}
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/actions/jekyll-build-pages:v1.0.13'
+  image: 'docker://ghcr.io/u1trav101/jekyll-build-pages:v0.1.14'

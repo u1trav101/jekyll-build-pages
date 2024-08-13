@@ -16,6 +16,18 @@ if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$S
   echo "::warning::The github-pages gem can't satisfy your Gemfile's dependencies. If you want to use a different Jekyll version or need additional dependencies, consider building Jekyll site with GitHub Actions: https://jekyllrb.com/docs/continuous-integration/github-actions/"
 fi
 
+# Install ruby dependencies
+if test -f /github/workspace/Gemfile; then
+  echo "Installing ruby dependencies"
+  bundle install
+fi
+
+# Install node dependencies
+if test -f /github/workspace/package.json; then
+  echo "Installing node dependencies"
+  npm install
+fi
+
 # Set environment variables required by supported plugins
 export JEKYLL_ENV="production"
 export JEKYLL_GITHUB_TOKEN=$INPUT_TOKEN
