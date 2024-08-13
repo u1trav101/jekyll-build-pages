@@ -9,7 +9,7 @@
 SOURCE_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_SOURCE
 DESTINATION_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_DESTINATION
 PAGES_GEM_HOME=$BUNDLE_APP_CONFIG
-GITHUB_PAGES_BIN=$PAGES_GEM_HOME/bin/github-pages
+GITHUB_PAGES_BIN=$PAGES_GEM_HOME/bin/jekyll
 
 # Check if Gemfile's dependencies are satisfied or print a warning
 if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$SOURCE_DIRECTORY/Gemfile"; then
