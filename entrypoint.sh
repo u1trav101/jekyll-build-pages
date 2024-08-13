@@ -52,7 +52,7 @@ fi
 { cd "$PAGES_GEM_HOME" || { echo "::error::pages gem not found"; exit 1; }; }
 
 # Run the command, capturing the output
-build_output="$($JEKYLL_BIN build "$VERBOSE" "$FUTURE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY")"
+build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY")"
 
 # Capture the exit code
 exit_code=$?
