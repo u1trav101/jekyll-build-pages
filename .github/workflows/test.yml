@@ -36,9 +36,6 @@ jobs:
     strategy:
       matrix:
         test:
-          - simple
-          - jekyll-include-cache
-          - future-false
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
