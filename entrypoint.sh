@@ -42,17 +42,14 @@ else
   VERBOSE=''
 fi
 
-# Set future flag
-if [ "$INPUT_FUTURE" = 'true' ]; then
-  FUTURE='--future'
-else
-  FUTURE=''
-fi
-
 { cd "$PAGES_GEM_HOME" || { echo "::error::pages gem not found"; exit 1; }; }
 
-# Run the command, capturing the output
-build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.pages.yml,_config.yml")"
+# Run the command, capturing the output, allows additional jekyll config if it exists
+if test -f /github/workspace/_config.yml; then
+  build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.pages.yml,/github/workspace/_config.yml")"
+else
+  build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.pages.yml")"
+fi
 
 # Capture the exit code
 exit_code=$?
