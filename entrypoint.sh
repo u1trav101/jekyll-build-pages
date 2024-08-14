@@ -10,6 +10,7 @@ SOURCE_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_SOURCE
 DESTINATION_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_DESTINATION
 PAGES_GEM_HOME=$BUNDLE_APP_CONFIG
 JEKYLL_BIN=$PAGES_GEM_HOME/bin/jekyll
+JEKYLL_CONFIG=${GITHUB_WORKSPACE}/_config.yml
 
 # Check if Gemfile's dependencies are satisfied or print a warning
 if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$SOURCE_DIRECTORY/Gemfile"; then
@@ -54,7 +55,7 @@ fi
 # Run the command, capturing the output, allowing additional jekyll config if it exists
 echo "Building..."
 python3 /merge_configs.py
-build_output="$($JEKYLL_BIN build "$VERBOSE" "$FUTURE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.yml")"
+build_output="$($JEKYLL_BIN build "$VERBOSE" "$FUTURE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "$JEKYLL_CONFIG")"
 
 # Capture the exit code
 exit_code=$?
