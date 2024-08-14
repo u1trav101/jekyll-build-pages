@@ -29,7 +29,9 @@ if len(sys.argv) > 1:
             data.update({"plugins": github_plugins})
         
         try:
-            data["theme"]
+            if data["theme"] == "jekyll-theme-minimal":
+                del data["theme"]
+                data.update({"remote_theme": REMOTE_THEME})
         except KeyError:
             data.update({"remote_theme": REMOTE_THEME})
     
