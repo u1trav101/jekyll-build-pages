@@ -23,7 +23,7 @@ if test -f ${GITHUB_WORKSPACE}/_config.yml; then
   python3 /merge_configs.py ${GITHUB_WORKSPACE}/_config.yml
 elif test -f ${SOURCE_DIRECTORY}/_config.yml; then
   python3 /merge_configs.py ${SOURCE_DIRECTORY}/_config.yml
-else; then
+else
   python3 /merge_configs.py
 fi
 
