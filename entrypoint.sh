@@ -17,6 +17,10 @@ if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$S
   echo "::warning::The github-pages gem can't satisfy your Gemfile's dependencies. If you want to use a different Jekyll version or need additional dependencies, consider building Jekyll site with GitHub Actions: https://jekyllrb.com/docs/continuous-integration/github-actions/"
 fi
 
+echo "Configuring Jekyll..."
+python3 /merge_configs.py
+cat "$JEKYLL_CONFIG"
+
 # Install ruby dependencies
 if test -f /github/workspace/Gemfile; then
   echo "Installing ruby dependencies..."
@@ -54,8 +58,6 @@ fi
 
 # Run the command, capturing the output, allowing additional jekyll config if it exists
 echo "Building..."
-python3 /merge_configs.py
-cat "$JEKYLL_CONFIG"
 build_output="$($JEKYLL_BIN build "$VERBOSE" "$FUTURE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "$JEKYLL_CONFIG")"
 
 # Capture the exit code
