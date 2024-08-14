@@ -4,11 +4,21 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-# Manage our dependency on the version of the github-pages gem here.
-gem "github-pages", "= 232"
+# dependencies to provide backwards compatibilty with github-pages
+gem "jekyll"
+gem "jekyll-coffeescript"
+gem "jekyll-default-layout"
+gem "jekyll-gist"
+gem "jekyll-github-metadata"
+gem "jekyll-optional-front-matter"
+gem "jekyll-paginate"
+gem "jekyll-readme-index"
+gem "jekyll-relative-links"
+gem "jekyll-remote-theme"
+gem "jekyll-titles-from-headings"
+gem "jekyll-theme-minimal"
 
-# Explicitly include this gem here.
-# It is not directly included in the github-pages gem list of dependencies,
-# even though it is included in the original GitHub Pages build infrastructure.
-gem "jekyll-include-cache", "= 0.2.1"
-gem "jekyll-octicons", "~> 14.2"
+# additional dependencies required for testing
+gem "jekyll-include-cache"
+gem "jekyll-octicons"
+gem "jemoji"

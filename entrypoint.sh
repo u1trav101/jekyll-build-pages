@@ -9,22 +9,37 @@
 SOURCE_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_SOURCE
 DESTINATION_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_DESTINATION
 PAGES_GEM_HOME=$BUNDLE_APP_CONFIG
-GITHUB_PAGES_BIN=$PAGES_GEM_HOME/bin/github-pages
+JEKYLL_BIN=$PAGES_GEM_HOME/bin/jekyll
+JEKYLL_CONFIG=/_config.out.yml
 
 # Check if Gemfile's dependencies are satisfied or print a warning
 if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$SOURCE_DIRECTORY/Gemfile"; then
   echo "::warning::The github-pages gem can't satisfy your Gemfile's dependencies. If you want to use a different Jekyll version or need additional dependencies, consider building Jekyll site with GitHub Actions: https://jekyllrb.com/docs/continuous-integration/github-actions/"
 fi
 
+echo "Configuring Jekyll..."
+chmod +x /bin/merge_configs
+if test -f "$SOURCE_DIRECTORY/_config.yml"; then
+  /bin/merge_configs "$SOURCE_DIRECTORY/_config.yml"
+elif test -f "${SOURCE_DIRECTORY}/_config.yaml"; then
+  /bin/merge_configs "$SOURCE_DIRECTORY/_config.yaml"
+elif test -f "${GITHUB_WORKSPACE}/_config.yml"; then
+  /bin/merge_configs "${GITHUB_WORKSPACE}/_config.yml"
+elif test -f "${GITHUB_WORKSPACE}/_config.yaml"; then
+  /bin/merge_configs "${GITHUB_WORKSPACE}/_config.yaml"
+else
+  /bin/merge_configs
+fi
+
 # Install ruby dependencies
-if test -f /github/workspace/Gemfile; then
-  echo "Installing ruby dependencies"
+if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
+  echo "Installing ruby dependencies..."
   bundle install
 fi
 
 # Install node dependencies
-if test -f /github/workspace/package.json; then
-  echo "Installing node dependencies"
+if test -f "${GITHUB_WORKSPACE}/package.json"; then
+  echo "Installing node dependencies..."
   npm install
 fi
 
@@ -51,8 +66,9 @@ fi
 
 { cd "$PAGES_GEM_HOME" || { echo "::error::pages gem not found"; exit 1; }; }
 
-# Run the command, capturing the output
-build_output="$($GITHUB_PAGES_BIN build "$VERBOSE" "$FUTURE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY")"
+# Run the command, capturing the output, allowing additional jekyll config if it exists
+echo "Building..."
+build_output="$($JEKYLL_BIN build "$VERBOSE" "$FUTURE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "$JEKYLL_CONFIG")"
 
 # Capture the exit code
 exit_code=$?
