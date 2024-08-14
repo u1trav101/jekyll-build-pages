@@ -21,5 +21,6 @@ ENV LANGUAGE en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
 
 COPY entrypoint.sh /entrypoint.sh
+COPY _config.yml /_config.pages.yml
 
 ENTRYPOINT ["/entrypoint.sh"]
