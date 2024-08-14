@@ -18,6 +18,7 @@ if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$S
 fi
 
 echo "Configuring Jekyll..."
+chmod +x /bin/merge_configs
 if test -f "$SOURCE_DIRECTORY/_config.yml"; then
   /bin/merge_configs "$SOURCE_DIRECTORY/_config.yml"
 elif test -f "${SOURCE_DIRECTORY}/_config.yaml"; then
