@@ -16,15 +16,17 @@ differences = []
 expected_files.each do |expected_file|
   BLACKLIST.each do |selector|
     if expected_file.include? selector
+      nil
     else
       if expected_file.include
-      if actual_files.include?(expected_file)
-        diff = `diff #{Shellwords.escape(File.join("_expected", expected_file))} #{Shellwords.escape(File.join("_site", expected_file))}`
-        if !$?.success?
-          differences << "Expected output of #{expected_file} differs:\n#{diff}"
+        if actual_files.include?(expected_file)
+          diff = `diff #{Shellwords.escape(File.join("_expected", expected_file))} #{Shellwords.escape(File.join("_site", expected_file))}`
+          if !$?.success?
+            differences << "Expected output of #{expected_file} differs:\n#{diff}"
+          end
+        else
+          differences << "Missing expected file: #{expected_file}"
         end
-      else
-        differences << "Missing expected file: #{expected_file}"
       end
     end
   end
