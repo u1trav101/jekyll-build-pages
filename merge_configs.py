@@ -7,7 +7,7 @@ github_plugins = [
     "jekyll-default-layout",
     "jekyll-gist",
     "jekyll-github-metadata",
-    "jekyll-optional-front-matter"
+    "jekyll-optional-front-matter",
     "jekyll-paginate",
     "jekyll-readme-index",
     "jekyll-titles-from-headings"
