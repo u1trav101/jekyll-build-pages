@@ -18,13 +18,13 @@ fi
 
 # Install ruby dependencies
 if test -f /github/workspace/Gemfile; then
-  echo "Installing ruby dependencies"
+  echo "Installing ruby dependencies..."
   bundle install
 fi
 
 # Install node dependencies
 if test -f /github/workspace/package.json; then
-  echo "Installing node dependencies"
+  echo "Installing node dependencies..."
   npm install
 fi
 
@@ -46,9 +46,11 @@ fi
 
 # Run the command, capturing the output, allows additional jekyll config if it exists
 if test -f /github/workspace/_config.yml; then
-  build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.pages.yml,/github/workspace/_config.yml")"
+  echo "Building with additional config..."
+  build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.yml,/github/workspace/_config.yml")"
 else
-  build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.pages.yml")"
+  echo "Building with base config..."
+  build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.yml")"
 fi
 
 # Capture the exit code
