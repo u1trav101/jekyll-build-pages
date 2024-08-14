@@ -19,6 +19,7 @@ if len(sys.argv) > 1:
     data = None
     with open(sys.argv[1], "r") as file:
         data = yaml.safe_load(file)
+        print(data)
 
         if data["plugins"] is not None:
             data["plugins"].update(github_plugins + data["plugins"])
