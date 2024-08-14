@@ -8,7 +8,8 @@ RUN apt-get update \
     locales \
     nodejs \
     npm \
-    python3
+    python3 \
+    python3-yaml
 
 COPY Gemfile Gemfile
 
