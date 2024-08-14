@@ -23,7 +23,7 @@ if len(sys.argv) > 1:
         try:
             data["plugins"] = data["plugins"] + github_plugins
         except KeyError:
-            pass
+            data.update({"plugins": github_plugins})
     
     with open(CONFIG_OUT_PATH, "w") as file:
         yaml.safe_dump(data, file)
