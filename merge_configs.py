@@ -21,7 +21,7 @@ if len(sys.argv) > 1:
         data = yaml.safe_load(file)
 
         try:
-            data["plugins"] += github_plugins
+            data["plugins"] = data["plugins"] + github_plugins
         except KeyError:
             pass
     
