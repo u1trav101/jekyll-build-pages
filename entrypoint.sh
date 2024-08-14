@@ -30,7 +30,6 @@ elif test -f "${GITHUB_WORKSPACE}/_config.yaml"; then
 else
   /bin/merge_configs
 fi
-cat /_config.out.yml
 
 # Install ruby dependencies
 if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
