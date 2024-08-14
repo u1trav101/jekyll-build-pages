@@ -3,6 +3,7 @@ import sys
 
 
 CONFIG_OUT_PATH = "/_config.out.yml"
+REMOTE_THEME = "pages-themes/minimal@v0.2.0"
 github_plugins = [
     "jekyll-coffeescript",
     "jekyll-default-layout",
@@ -11,6 +12,7 @@ github_plugins = [
     "jekyll-optional-front-matter",
     "jekyll-paginate",
     "jekyll-readme-index",
+    "jekyll-remote-theme"
     "jekyll-titles-from-headings"
 ]
 
@@ -28,7 +30,7 @@ if len(sys.argv) > 1:
         try:
             data["theme"]
         except KeyError:
-            data.update({"theme": "jekyll-theme-minimal"})
+            data.update({"remote_theme": REMOTE_THEME})
     
     with open(CONFIG_OUT_PATH, "w") as file:
         yaml.safe_dump(data, file)
@@ -37,5 +39,5 @@ else:
     with open(CONFIG_OUT_PATH, "w") as file:
         yaml.safe_dump({
             "plugins": github_plugins,
-            "theme": "jekyll-theme-minimal"
+            "remote_theme": REMOTE_THEME
         }, file)

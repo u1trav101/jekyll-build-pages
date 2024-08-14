@@ -14,6 +14,7 @@ gem "jekyll-optional-front-matter"
 gem "jekyll-paginate"
 gem "jekyll-readme-index"
 gem "jekyll-relative-links"
+gem "jekyll-remote-theme"
 gem "jekyll-titles-from-headings"
 gem "jekyll-theme-minimal"
 
