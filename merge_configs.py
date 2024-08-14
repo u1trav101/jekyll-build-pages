@@ -16,7 +16,7 @@ github_plugins = [
 ]
 
 if len(sys.argv > 1):
-    print("Jekyll config provided, merging with github-pages config...")
+    print(f"Jekyll config found at {sys.argv[1]}, merging with github-pages config...")
     data = None
     with open(sys.argv[1], "r") as file:
         data = yaml.safe_load(file)
