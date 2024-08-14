@@ -15,7 +15,7 @@ differences = []
 
 expected_files.each do |expected_file|
   BLACKLIST.each do |selector|
-    if expected_file.include? selector
+    if expected_file.include?(selector)
       nil
     else
       if expected_file.include
