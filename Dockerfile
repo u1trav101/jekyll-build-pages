@@ -23,5 +23,6 @@ ENV LANGUAGE en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
 
 COPY entrypoint.sh /entrypoint.sh
+COPY bin/merge_configs /bin/merge_configs
 
 ENTRYPOINT ["/entrypoint.sh"]
