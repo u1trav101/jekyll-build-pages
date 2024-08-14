@@ -12,7 +12,7 @@ github_plugins = [
     "jekyll-optional-front-matter",
     "jekyll-paginate",
     "jekyll-readme-index",
-    "jekyll-remote-theme"
+    "jekyll-remote-theme",
     "jekyll-titles-from-headings"
 ]
 
