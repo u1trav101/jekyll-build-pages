@@ -15,8 +15,9 @@ gem "jekyll-paginate"
 gem "jekyll-readme-index"
 gem "jekyll-relative-links"
 gem "jekyll-titles-from-headings"
+gem "jekyll-theme-minimal"
 
-# additional dependencies required by this action
+# additional dependencies required for testing
 gem "jekyll-include-cache"
 gem "jekyll-octicons"
 gem "jemoji"
