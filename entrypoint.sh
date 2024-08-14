@@ -10,7 +10,7 @@ SOURCE_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_SOURCE
 DESTINATION_DIRECTORY=${GITHUB_WORKSPACE}/$INPUT_DESTINATION
 PAGES_GEM_HOME=$BUNDLE_APP_CONFIG
 JEKYLL_BIN=$PAGES_GEM_HOME/bin/jekyll
-JEKYLL_CONFIG=${GITHUB_WORKSPACE}/_config.yml
+JEKYLL_CONFIG=/_config.out.yml
 
 # Check if Gemfile's dependencies are satisfied or print a warning
 if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$SOURCE_DIRECTORY/Gemfile"; then
@@ -18,10 +18,10 @@ if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$S
 fi
 
 echo "Configuring Jekyll..."
-if test -f "${GITHUB_WORKSPACE}/_config.yml"; then
-  python3 /merge_configs.py "${GITHUB_WORKSPACE}/_config.yml"
-elif test -f "${SOURCE_DIRECTORY}/_config.yml"; then
+if test -f "${SOURCE_DIRECTORY}/_config.yml"; then
   python3 /merge_configs.py "${SOURCE_DIRECTORY}/_config.yml"
+elif test -f "${GITHUB_WORKSPACE}/_config.yml"; then
+  python3 /merge_configs.py "${GITHUB_WORKSPACE}/_config.yml"
 else
   python3 /merge_configs.py
 fi
