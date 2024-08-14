@@ -18,6 +18,7 @@ if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$S
 fi
 
 echo "Configuring Jekyll..."
+ls -a /github/workspace/
 python3 /merge_configs.py
 cat "$JEKYLL_CONFIG"
 
