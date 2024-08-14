@@ -24,6 +24,11 @@ if len(sys.argv) > 1:
             data["plugins"] = data["plugins"] + github_plugins
         except KeyError:
             data.update({"plugins": github_plugins})
+        
+        try:
+            data["theme"]
+        except KeyError:
+            data.update({"theme": "jekyll-theme-minimal"})
     
     with open(CONFIG_OUT_PATH, "w") as file:
         yaml.safe_dump(data, file)
@@ -31,5 +36,6 @@ else:
     print("No Jekyll config provided, using base github-pages config...")
     with open(CONFIG_OUT_PATH, "w") as file:
         yaml.safe_dump({
-            "plugins": github_plugins
+            "plugins": github_plugins,
+            "theme": "jekyll-theme-minimal"
         }, file)
