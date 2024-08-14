@@ -7,4 +7,4 @@ plugins:
     - jekyll-paginate
     - jekyll-readme-index
     - jekyll-relative-links
-    - jekyll-titles-from-heading
+    - jekyll-titles-from-headings
