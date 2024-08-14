@@ -1,6 +1,9 @@
-name: 'Build Jekyll for GitHub Pages - u1trav101et fork'
+name: 'Build Jekyll for GitHub Pages with Unsupported Plugins'
 description: 'A simple GitHub Action for producing Jekyll build artifacts compatible with GitHub Pages'
 author: 'u1trav101'
+branding:
+  icon: box
+  color: purple
 inputs:
   source:
     description: 'Directory where the source files reside.'
