@@ -14,7 +14,7 @@ github_plugins = [
     "jekyll-titles-from-headings"
 ]
 
-if len(sys.argv > 1):
+if len(sys.argv) > 1:
     print(f"Jekyll config found at {sys.argv[1]}, merging with github-pages config...")
     data = None
     with open(sys.argv[1], "r") as file:
