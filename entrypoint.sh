@@ -27,13 +27,13 @@ else
 fi
 
 # Install ruby dependencies
-if test -f {$GITHUB_WORKSPACE}/Gemfile; then
+if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
   echo "Installing ruby dependencies..."
   bundle install
 fi
 
 # Install node dependencies
-if test -f ${GITHUB_WORKSPACE}/package.json; then
+if test -f "${GITHUB_WORKSPACE}/package.json"; then
   echo "Installing node dependencies..."
   npm install
 fi
