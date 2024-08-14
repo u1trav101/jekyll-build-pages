@@ -1,5 +1,5 @@
 plugins:
-    - jekyll-coffescript
+    - jekyll-coffeescript
     - jekyll-default-layout
     - jekyll-gist
     - jekyll-github-metadata
