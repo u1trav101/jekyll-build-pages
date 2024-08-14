@@ -13,6 +13,8 @@ github_plugins = [
     "jekyll-titles-from-headings"
 ]
 
+print("Configuring Jekyll...")
+
 if os.path.exists(JEKYLL_CONFIG_PATH):
     print("Jekyll config provided, merging with github-pages config...")
     data = None
