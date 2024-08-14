@@ -19,17 +19,22 @@ fi
 
 echo "Configuring Jekyll..."
 ls -a /github/workspace/
-python3 /merge_configs.py
-cat "$JEKYLL_CONFIG"
+if test -f ${GITHUB_WORKSPACE}/_config.yml; then
+  python3 /merge_configs.py ${GITHUB_WORKSPACE}/_config.yml
+elif test -f ${SOURCE_DIRECTORY}/_config.yml; then
+  python3 /merge_configs.py ${SOURCE_DIRECTORY}/_config.yml
+else; then
+  python3 /merge_configs.py
+fi
 
 # Install ruby dependencies
-if test -f /github/workspace/Gemfile; then
+if test -f {$GITHUB_WORKSPACE}/Gemfile; then
   echo "Installing ruby dependencies..."
   bundle install
 fi
 
 # Install node dependencies
-if test -f /github/workspace/package.json; then
+if test -f ${GITHUB_WORKSPACE}/package.json; then
   echo "Installing node dependencies..."
   npm install
 fi
