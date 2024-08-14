@@ -53,7 +53,7 @@ fi
 
 # Run the command, capturing the output, allowing additional jekyll config if it exists
 echo "Building..."
-python merge_configs.py
+python3 merge_configs.py
 build_output="$($JEKYLL_BIN build "$VERBOSE" "$FUTURE --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.yml")"
 
 # Capture the exit code
