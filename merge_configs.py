@@ -20,8 +20,10 @@ if len(sys.argv) > 1:
     with open(sys.argv[1], "r") as file:
         data = yaml.safe_load(file)
 
-        if data["plugins"] is not None:
+        try:
             data["plugins"] += github_plugins
+        except KeyError:
+            pass
     
     with open(CONFIG_OUT_PATH, "w") as file:
         yaml.safe_dump(data, file)
