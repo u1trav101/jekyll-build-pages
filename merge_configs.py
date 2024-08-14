@@ -25,7 +25,7 @@ if os.path.exists(JEKYLL_CONFIG_PATH):
         yaml.safe_dump(data, file)
     
 else:
-    with open(JEKYLL_CONFIG_PATH, "w"):
+    with open(JEKYLL_CONFIG_PATH, "w") as file:
         yaml.safe_dump({
             "plugins": github_plugins
         }, file)
