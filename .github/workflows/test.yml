@@ -42,6 +42,8 @@ jobs:
           - mojombo
           - themes
           - jekyll-include-cache
+          - future-false
+          - future-true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

@@ -42,16 +42,19 @@ else
   VERBOSE=''
 fi
 
+# Set future flag
+if [ "$INPUT_FUTURE" = 'true' ]; then
+  FUTURE='--future'
+else
+  FUTURE=''
+fi
+
 { cd "$PAGES_GEM_HOME" || { echo "::error::pages gem not found"; exit 1; }; }
 
-# Run the command, capturing the output, allows additional jekyll config if it exists
-if test -f /github/workspace/_config.yml; then
-  echo "Building with additional config..."
-  build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.yml,/github/workspace/_config.yml")"
-else
-  echo "Building with base config..."
-  build_output="$($JEKYLL_BIN build "$VERBOSE" --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.yml")"
-fi
+# Run the command, capturing the output, allowing additional jekyll config if it exists
+echo "Building..."
+python merge_configs.py
+build_output="$($JEKYLL_BIN build "$VERBOSE" "$FUTURE --source "$SOURCE_DIRECTORY" --destination "$DESTINATION_DIRECTORY" --config "/_config.yml")"
 
 # Capture the exit code
 exit_code=$?
