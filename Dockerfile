@@ -22,7 +22,6 @@ ENV LANGUAGE en_GB.UTF-8
 ENV LC_ALL en_GB.UTF-8
 
 COPY entrypoint.sh /entrypoint.sh
-COPY _config.yml /_config.yml
 COPY merge_configs.py /merge_configs.py
 
 ENTRYPOINT ["/entrypoint.sh"]
