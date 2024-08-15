@@ -2,7 +2,7 @@
 
 ####################################################################################################
 #
-# Calls github-pages executable to build the site using allowed plugins and supported configuration
+# Calls jekyll executable to build the site using any plugins
 #
 ####################################################################################################
 
@@ -12,13 +12,12 @@ PAGES_GEM_HOME=$BUNDLE_APP_CONFIG
 JEKYLL_BIN=$PAGES_GEM_HOME/bin/jekyll
 JEKYLL_CONFIG=/_config.out.yml
 
-# Check if Gemfile's dependencies are satisfied or print a warning
-if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$SOURCE_DIRECTORY/Gemfile"; then
-  echo "::warning::The github-pages gem can't satisfy your Gemfile's dependencies. If you want to use a different Jekyll version or need additional dependencies, consider building Jekyll site with GitHub Actions: https://jekyllrb.com/docs/continuous-integration/github-actions/"
-fi
+# Marking binaries as executables
+chmod +x /bin/merge_jekyll_configs
+chmod +x /bin/merge_gemfiles
 
+# Merging jekyll configurations if needed
 echo "Configuring Jekyll..."
-chmod +x /bin/merge_configs
 if test -f "$SOURCE_DIRECTORY/_config.yml"; then
   /bin/merge_jekyll_configs "$SOURCE_DIRECTORY/_config.yml"
 elif test -f "${SOURCE_DIRECTORY}/_config.yaml"; then
@@ -34,16 +33,19 @@ fi
 # Change to working directory 
 cd "${GITHUB_WORKSPACE}" || exit
 
-# Install ruby dependencies
-if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
+# Install ruby dependencies, merging Gemfiles if needed
+if test -f ./Gemfile; then
   echo "Installing ruby dependencies..."
-  bundle install
+  /bin/merge_gemfiles ./Gemfile
+else
+  cp /Gemfile ./Gemfile
 fi
+bundle install
 
 # Install node dependencies
-if test -f "${GITHUB_WORKSPACE}/package.json"; then
+if test -f ./package.json; then
   echo "Installing node dependencies..."
-  mkdir "${GITHUB_WORKSPACE}/node_modules"
+  mkdir ./node_modules
   npm install --prefix "${GITHUB_WORKSPACE}"
 fi
 
