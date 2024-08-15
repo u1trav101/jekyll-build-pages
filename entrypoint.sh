@@ -31,6 +31,8 @@ else
   /bin/merge_configs
 fi
 
+cd "${GITHUB_WORKSPACE}"
+
 # Install ruby dependencies
 if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
   echo "Installing ruby dependencies..."
@@ -40,7 +42,7 @@ fi
 # Install node dependencies
 if test -f "${GITHUB_WORKSPACE}/package.json"; then
   echo "Installing node dependencies..."
-  npm install -g
+  npm install
 fi
 
 # Set environment variables required by supported plugins
