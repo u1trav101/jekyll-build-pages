@@ -52,7 +52,7 @@ fi
 if test -f ./package.json; then
   echo "Installing node dependencies..."
   mkdir ./node_modules
-  npm install --prefix "$SOURCE_DIRECTORY"
+  npm install --prefix "./"
 fi
 
 # Set environment variables required by supported plugins
