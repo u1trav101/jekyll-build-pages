@@ -34,14 +34,16 @@ fi
 echo "Checking for Gemfile merge..."
 if test -f "$SOURCE_DIRECTORY/Gemfile"; then
   /bin/merge_gemfiles "$SOURCE_DIRECTORY/Gemfile"
+  cd "$SOURCE_DIRECTORY" || exit
 elif test -f "${GITHUB_WORKSPACE}/Gemfile"; then
   /bin/merge_gemfiles "${GITHUB_WORKSPACE}/Gemfile"
+  cd "${GITHUB_WORKSPACE}" || exit
 else
   mv /Gemfile "$SOURCE_DIRECTORY/Gemfile"
+  cd "${GITHUB_WORKSPACE}" || exit
 fi
 
 # Change to working directory 
-cd "$SOURCE_DIRECTORY" || exit
 
 # Install ruby dependencies, merging Gemfiles if needed
 if test -f ./Gemfile; then
