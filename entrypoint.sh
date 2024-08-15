@@ -46,8 +46,13 @@ if test -f "${GITHUB_WORKSPACE}/package.json"; then
   npm install --prefix "${GITHUB_WORKSPACE}"
 fi
 
+echo "Listing all..."
 ls -a
+echo "Listing node_modules"
 ls -a ./node_modules
+echo "Listing postcss"
+ls -a ./node_modules/postcss
+echo "pwd"
 pwd
 
 # Set environment variables required by supported plugins
