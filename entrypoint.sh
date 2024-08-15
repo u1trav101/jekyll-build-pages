@@ -20,11 +20,11 @@ chmod +x /bin/merge_gemfiles
 echo "Configuring Jekyll..."
 if test -f "$SOURCE_DIRECTORY/_config.yml"; then
   /bin/merge_jekyll_configs "$SOURCE_DIRECTORY/_config.yml"
-elif test -f "${SOURCE_DIRECTORY}/_config.yaml"; then
+elif test -f "$SOURCE_DIRECTORY/_config.yaml"; then
   /bin/merge_jekyll_configs "$SOURCE_DIRECTORY/_config.yaml"
-elif test -f "${GITHUB_WORKSPACE}/_config.yml"; then
+elif test -f "$GITHUB_WORKSPACE/_config.yml"; then
   /bin/merge_jekyll_configs "${GITHUB_WORKSPACE}/_config.yml"
-elif test -f "${GITHUB_WORKSPACE}/_config.yaml"; then
+elif test -f "$GITHUB_WORKSPACE/_config.yaml"; then
   /bin/merge_jekyll_configs "${GITHUB_WORKSPACE}/_config.yaml"
 else
   /bin/merge_jekyll_configs
@@ -32,14 +32,15 @@ fi
 
 # Merging Gemfiles if needed
 echo "Checking for Gemfile merge..."
-if test -f "${SOURCE_DIRECTORY}/Gemfile"; then
+if test -f "$SOURCE_DIRECTORY/Gemfile"; then
   /bin/merge_gemfiles "${SOURCE_DIRECTORY}./Gemfile"
 else
-  mv /Gemfile "${SOURCE_DIRECTORY}/Gemfile"
+  mv /Gemfile "$SOURCE_DIRECTORY/Gemfile"
+
 fi
 
 # Change to working directory 
-cd "${GITHUB_WORKSPACE}" || exit
+cd "$SOURCE_DIRECTORY" || exit
 
 # Install ruby dependencies, merging Gemfiles if needed
 if test -f ./Gemfile; then
