@@ -20,15 +20,15 @@ fi
 echo "Configuring Jekyll..."
 chmod +x /bin/merge_configs
 if test -f "$SOURCE_DIRECTORY/_config.yml"; then
-  /bin/merge_configs "$SOURCE_DIRECTORY/_config.yml"
+  /bin/merge_jekyll_configs "$SOURCE_DIRECTORY/_config.yml"
 elif test -f "${SOURCE_DIRECTORY}/_config.yaml"; then
-  /bin/merge_configs "$SOURCE_DIRECTORY/_config.yaml"
+  /bin/merge_jekyll_configs "$SOURCE_DIRECTORY/_config.yaml"
 elif test -f "${GITHUB_WORKSPACE}/_config.yml"; then
-  /bin/merge_configs "${GITHUB_WORKSPACE}/_config.yml"
+  /bin/merge_jekyll_configs "${GITHUB_WORKSPACE}/_config.yml"
 elif test -f "${GITHUB_WORKSPACE}/_config.yaml"; then
-  /bin/merge_configs "${GITHUB_WORKSPACE}/_config.yaml"
+  /bin/merge_jekyll_configs "${GITHUB_WORKSPACE}/_config.yaml"
 else
-  /bin/merge_configs
+  /bin/merge_jekyll_configs
 fi
 
 # Change to working directory 
