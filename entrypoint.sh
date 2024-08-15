@@ -35,7 +35,7 @@ echo "Checking for Gemfile merge..."
 if test -f "${SOURCE_DIRECTORY}/Gemfile"; then
   /bin/merge_gemfiles "${SOURCE_DIRECTORY}./Gemfile"
 else
-  cp /Gemfile "${SOURCE_DIRECTORY}/Gemfile"
+  mv /Gemfile "${SOURCE_DIRECTORY}/Gemfile"
 fi
 
 # Change to working directory 
