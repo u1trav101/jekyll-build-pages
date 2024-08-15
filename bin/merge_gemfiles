@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+import sys
 
 
 print(f"Gemfile found at {sys.argv[1]}, merging with github-pages Gemfile...")
