@@ -31,7 +31,7 @@ else
   /bin/merge_configs
 fi
 
-cd "${GITHUB_WORKSPACE}"
+cd "${GITHUB_WORKSPACE}" || exit
 
 # Install ruby dependencies
 if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
