@@ -40,7 +40,7 @@ fi
 # Install node dependencies
 if test -f "${GITHUB_WORKSPACE}/package.json"; then
   echo "Installing node dependencies..."
-  npm install
+  npm install -g
 fi
 
 # Set environment variables required by supported plugins
