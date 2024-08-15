@@ -34,6 +34,8 @@ fi
 echo "Checking for Gemfile merge..."
 if test -f "$SOURCE_DIRECTORY/Gemfile"; then
   /bin/merge_gemfiles "$SOURCE_DIRECTORY/Gemfile"
+elif test -f "${GITHUB_WORKSPACE}/Gemfile"; then
+  /bin/merge_gemfiles "${GITHUB_WORKSPACE}/Gemfile"
 else
   mv /Gemfile "$SOURCE_DIRECTORY/Gemfile"
 fi
