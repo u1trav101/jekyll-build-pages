@@ -1,8 +1,9 @@
 {
-    "devDependencies": {
-      "autoprefixer": "^10.4.20",
-      "cssnano": "^7.0.5",
-      "postcss": "^8.4.41"
-    }
+  "name": "@u1trav101/jekyll-build-pages",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.5",
+    "postcss": "^8.4.41"
+  }
 }
   
