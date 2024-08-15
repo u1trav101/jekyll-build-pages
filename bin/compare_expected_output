@@ -4,7 +4,7 @@ require "pathname"
 require "shellwords"
 
 project_path = ARGV[0]
-BLACKLIST = [".css.map"]
+BLACKLIST = [".css.map", "package-lock.json"]
 
 Dir.chdir(project_path)
 
@@ -14,18 +14,21 @@ actual_files = Dir["_site/**/*"].select { |path| File.file?(path) }.map { |path|
 differences = []
 
 expected_files.each do |expected_file|
+  file_blacklisted = 0
   BLACKLIST.each do |selector|
     if expected_file.include?(selector)
-      nil
-    else
-      if actual_files.include?(expected_file)
-        diff = `diff #{Shellwords.escape(File.join("_expected", expected_file))} #{Shellwords.escape(File.join("_site", expected_file))}`
-        if !$?.success?
-          differences << "Expected output of #{expected_file} differs:\n#{diff}"
-        end
-      else
-        differences << "Missing expected file: #{expected_file}"
+      file_blacklisted = 1
+    end
+  end
+  
+  if file_blacklisted == 0
+    if actual_files.include?(expected_file)
+      diff = `diff #{Shellwords.escape(File.join("_expected", expected_file))} #{Shellwords.escape(File.join("_site", expected_file))}`
+      if !$?.success?
+        differences << "Expected output of #{expected_file} differs:\n#{diff}"
       end
+    else
+      differences << "Missing expected file: #{expected_file}"
     end
   end
 end

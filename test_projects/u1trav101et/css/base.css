@@ -1,0 +1,64 @@
+---
+---
+
+@font-face {
+    font-family: "merchant-copy";
+    src: url("../font/merchant_copy.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "eb-garamond-italic";
+    src: url("../font/eb_garamond_italic.woff2") format("woff2");
+}
+
+html {
+    background-color: #18012D;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "merchant-copy";
+    color: #fefefe;
+}
+
+body {
+    min-height: 100vh;
+}
+
+main {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: 20px;
+    width: 100%;
+}
+
+a {
+    all: unset;
+    cursor: pointer;
+    font-size: 2.5rem;
+
+    border-bottom: 1px solid #fefefe;
+}
+
+a:hover {
+    color: grey;
+}
+
+.bg {
+    background: url("../img/bg.webp");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+}
+
+.return {
+    margin-left: 20px;
+}

@@ -1,0 +1,20 @@
+#! /usr/bin/env python3
+import sys
+
+
+print(f"Gemfile found at {sys.argv[1]}, merging with github-pages Gemfile...")
+with open(sys.argv[1], "a") as file:
+    file.write("""
+gem "jekyll"
+gem "jekyll-coffeescript"
+gem "jekyll-default-layout"
+gem "jekyll-gist"
+gem "jekyll-github-metadata"
+gem "jekyll-optional-front-matter"
+gem "jekyll-paginate"
+gem "jekyll-readme-index"
+gem "jekyll-relative-links"
+gem "jekyll-remote-theme"
+gem "jekyll-titles-from-headings"
+gem "jekyll-theme-minimal"
+    """)

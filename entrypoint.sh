@@ -2,7 +2,7 @@
 
 ####################################################################################################
 #
-# Calls github-pages executable to build the site using allowed plugins and supported configuration
+# Calls jekyll executable to build the site using any plugins
 #
 ####################################################################################################
 
@@ -12,39 +12,45 @@ PAGES_GEM_HOME=$BUNDLE_APP_CONFIG
 JEKYLL_BIN=$PAGES_GEM_HOME/bin/jekyll
 JEKYLL_CONFIG=/_config.out.yml
 
-# Check if Gemfile's dependencies are satisfied or print a warning
-if test -e "$SOURCE_DIRECTORY/Gemfile" && ! bundle check --dry-run --gemfile "$SOURCE_DIRECTORY/Gemfile"; then
-  echo "::warning::The github-pages gem can't satisfy your Gemfile's dependencies. If you want to use a different Jekyll version or need additional dependencies, consider building Jekyll site with GitHub Actions: https://jekyllrb.com/docs/continuous-integration/github-actions/"
+# Marking binaries as executables
+chmod +x /bin/merge_jekyll_configs
+chmod +x /bin/merge_gemfiles
+
+# Merging jekyll configurations if needed
+echo "Configuring Jekyll..."
+if test -f "$SOURCE_DIRECTORY/_config.yml"; then
+  /bin/merge_jekyll_configs "$SOURCE_DIRECTORY/_config.yml"
+elif test -f "$SOURCE_DIRECTORY/_config.yaml"; then
+  /bin/merge_jekyll_configs "$SOURCE_DIRECTORY/_config.yaml"
+elif test -f "$GITHUB_WORKSPACE/_config.yml"; then
+  /bin/merge_jekyll_configs "${GITHUB_WORKSPACE}/_config.yml"
+elif test -f "$GITHUB_WORKSPACE/_config.yaml"; then
+  /bin/merge_jekyll_configs "${GITHUB_WORKSPACE}/_config.yaml"
+else
+  /bin/merge_jekyll_configs
 fi
 
-echo "Configuring Jekyll..."
-chmod +x /bin/merge_configs
-if test -f "$SOURCE_DIRECTORY/_config.yml"; then
-  /bin/merge_configs "$SOURCE_DIRECTORY/_config.yml"
-elif test -f "${SOURCE_DIRECTORY}/_config.yaml"; then
-  /bin/merge_configs "$SOURCE_DIRECTORY/_config.yaml"
-elif test -f "${GITHUB_WORKSPACE}/_config.yml"; then
-  /bin/merge_configs "${GITHUB_WORKSPACE}/_config.yml"
-elif test -f "${GITHUB_WORKSPACE}/_config.yaml"; then
-  /bin/merge_configs "${GITHUB_WORKSPACE}/_config.yaml"
+# Merging Gemfiles if needed
+echo "Checking for Gemfile merge..."
+if test -f "$SOURCE_DIRECTORY/Gemfile"; then
+  /bin/merge_gemfiles "$SOURCE_DIRECTORY/Gemfile"
 else
-  /bin/merge_configs
+  mv /Gemfile "$SOURCE_DIRECTORY/Gemfile"
 fi
 
 # Change to working directory 
-cd "${GITHUB_WORKSPACE}" || exit
+cd "$SOURCE_DIRECTORY" || exit
 
-# Install ruby dependencies
-if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
-  echo "Installing ruby dependencies..."
+# Install ruby dependencies, merging Gemfiles if needed
+if test -f ./Gemfile; then
   bundle install
 fi
 
 # Install node dependencies
-if test -f "${GITHUB_WORKSPACE}/package.json"; then
+if test -f ./package.json; then
   echo "Installing node dependencies..."
-  mkdir "${GITHUB_WORKSPACE}/node_modules"
-  npm install --prefix "${GITHUB_WORKSPACE}"
+  mkdir ./node_modules
+  npm install --prefix "$SOURCE_DIRECTORY"
 fi
 
 # Set environment variables required by supported plugins

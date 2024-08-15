@@ -1,0 +1,85 @@
+---
+---
+
+@font-face {
+    font-family: "sf-pro";
+    src: url("../font/sf_pro.woff2") format("woff2");
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+body {
+    margin-top: 20px;
+    height: 100%;
+
+    background-color: black;
+    color: #efefef;
+    font-family: "sf-pro";
+    overflow: hidden;
+}
+
+a {
+    color: #efb70a;
+    text-decoration: none;
+}
+
+h1 {
+    margin: 10px 20px;
+}
+
+p {
+    margin: 20px 25px;
+    height: 100%;
+}
+
+[contenteditable] {
+    outline: none;
+}
+
+nav {
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+nav img {
+    width: 30px;
+    height: 30px;
+}
+
+nav .right {
+    margin-right: 20px;
+}
+
+nav .right img {
+    width: 25px;
+    height: 25px;
+}
+
+.date {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.85rem;
+
+    color: #97979d;
+}
+
+.flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.share {
+    padding-right: 30px;
+}
+
+.more .dots {
+    margin-left: -22.5px;
+    width: 20px;
+    height: 20px;
+}
