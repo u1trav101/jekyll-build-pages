@@ -1,0 +1,62 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="two comets on a trajectory for eachother - 13/04/2023">
+    <link rel="stylesheet" href="/css/apple_notes.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/180px.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="canonical" href="https://u1trav101.net/writings/comets.html">
+    <title>u1trav101et - comets</title>
+</head>
+<body>
+    <nav class="flex-horizontal">
+        <a href="/writings" class="flex-horizontal">
+            <img src="/img/chevron-left.svg" alt="return">
+            Writings
+        </a>
+        <div class="right flex-horizontal">
+            <a href="#">
+                <img class="share" id="share" src="/img/share.svg" alt="share">
+            </a>
+            <a href="#" class="more flex-horizontal">
+                <img src="/img/circle.svg" alt="more">
+                <img class="dots" src="/img/more-horizontal.svg" alt="more">
+            </a>
+        </div>
+    </nav>
+    <span class="date">13 April 2023 at 03:22</span>
+    <h1 contenteditable="true">comets</h1>
+    <p contenteditable="true">
+        two comets on a trajectory for eachother
+        <br><br>
+        they meet and orbit, locked in eachother's embrace
+        <br><br>
+        the energy builds, they spin too fast
+        <br><br>
+        they can't hold on to eachother
+        <br><br>
+        and so off they shoot, into the dark and cold
+        <br><br>
+        noone's fault but a universal constant; a balancing sum
+    </p>
+</body>
+<script>
+    const shareButton = document.getElementById("share");
+
+    shareButton.addEventListener("click", async () => {
+        if (navigator.share && navigator.canShare({ title: document.title, url: window.location.href })) {
+            try {
+                await navigator.share({ title: document.title, url: window.location.href });
+            } catch (err) {
+                console.error("Share failed:", err.message);
+            }
+        }
+    });
+</script>
+</html>

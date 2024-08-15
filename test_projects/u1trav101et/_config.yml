@@ -1,0 +1,20 @@
+
+source:
+    ./src
+plugins:
+    - jekyll-coffeescript
+    - jekyll-default-layout
+    - jekyll-gist
+    - jekyll-github-metadata
+    - jekyll-optional-front-matter
+    - jekyll-paginate
+    - jekyll-readme-index
+    - jekyll-remote-theme
+    - jekyll-titles-from-headings
+    - jekyll-minifier
+    - jekyll-postcss
+jekyll-minifier:
+    exclude: "*.css"
+    compress_css: false
+    uglifier_args:
+        harmony: true

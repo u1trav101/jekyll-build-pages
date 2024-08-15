@@ -1,0 +1,110 @@
+---
+---
+
+.return {
+    position: absolute;
+    margin-left: 0;
+    left: 20px;
+    width: fit-content;
+}
+
+.photos {
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    display: grid;
+    grid: auto / auto auto auto;
+    row-gap: 50px;
+}
+
+.photos div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photos div h2 {
+    font-size: 2rem;
+}
+
+.photos div a {
+    width: 60%;
+
+    border: none;
+}
+
+.photos div img {
+    width: 100%;
+
+    border: 1px solid grey;
+}
+
+.photos div span {
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+.scroll {
+    display: none;
+}
+
+.copyright {
+    position: fixed;
+    writing-mode: vertical-lr;
+    text-orientation:sideways-right;
+    text-wrap: nowrap;
+    bottom: 0;
+    right: 0;
+
+    color: grey;
+}
+
+@media only screen and (max-width: 1280px) {
+    .photos {
+        grid: auto / auto auto;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .return {
+        position: relative;
+    }
+
+    .photos div a {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    .photos {
+        grid: auto / auto;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .scroll {
+        display: block;
+        width: 100%;
+        padding: 20px 0;
+
+        background: none;
+        color: #fefefe;
+        font-size: 1.5rem;
+        font-family: "merchant-copy";
+        font-weight: bold;
+        border: none;
+        border: 1px solid #fefefe;
+    }
+
+    .copyright {
+        position: relative;
+        writing-mode:unset;
+
+        text-orientation: upright;
+    }
+}

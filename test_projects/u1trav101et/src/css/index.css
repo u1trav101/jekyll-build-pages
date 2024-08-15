@@ -1,0 +1,375 @@
+---
+---
+
+main {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	margin-top: 0;
+}
+
+main section {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+img {
+	border: 1px solid grey;
+}
+
+.gate {
+	margin: 100px 0 0 100px;
+	width: fit-content;
+	height: min-content;
+
+	cursor: help;
+}
+
+.gate img {
+	width: 700px;
+	margin-bottom: -22px;
+}
+
+.gate h1 {
+	margin: 0;
+}
+
+.nudesign {
+	display: flex;
+	height: 100%;
+}
+
+.nudesign h3 {
+	margin: 100px 0 auto 150px;
+	width: fit-content;
+	font-size: 4rem;
+	text-wrap: nowrap;
+
+	font-weight: 100;
+	font-family: "eb-garamond-italic";
+	background-color: black;
+	animation: red-glow 5s alternate infinite;
+}
+
+.glitch {
+	width: 400px;
+	margin: 0 auto;
+
+	font-size: 4rem;
+}
+
+@keyframes red-glow {
+	0%, 50% {
+		background-color: black;
+	}
+	51%, 100% {
+		background-color: #3C0202;
+	}
+}
+
+.image-flipped {
+	margin-bottom: -525px;
+}
+
+.caption-flipped {
+	transform: scale(1, -1);
+
+	text-align: right;
+}
+
+main .marquee {
+	position: absolute;
+	height: 100%;
+}
+
+main .marquee span {
+	position: fixed;
+	font-size: 3rem;
+	height: 100%;
+
+	writing-mode: vertical-lr;
+	text-orientation: upright;
+
+
+	/* show the marquee just outside the paragraph */
+	will-change: transform;
+	animation: marquee 15s linear infinite forwards;
+}
+
+.marquee-reversed {
+	animation: marquee-reversed 15s linear infinite forwards;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translate(0, 100%);
+	}
+	100% {
+		transform: translate(0, -100%);
+	}
+}
+
+@keyframes marquee-reversed {
+	0% {
+		transform: translate(0, -100%);
+	}
+
+	100% {
+		transform: translate(0, 100%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.marquee span {
+		animation-iteration-count: 1;
+		animation-duration: 0.01;
+		width: auto;
+		padding-left: 0;
+	}
+}
+
+aside {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.poem {
+	text-wrap: nowrap;
+}
+
+.horizon {
+	margin: 50px 0 0 100px;
+}
+
+nav {
+	margin: 30px 50px 0 auto;
+	display: flex;
+	flex-direction: column;
+	height: fit-content;
+}
+
+nav ul {
+	padding: 0;
+	height: fit-content;
+}
+
+nav ul li {
+	padding: 9px 0;
+	margin: 10px 0;
+
+	list-style: none;
+	text-align: right;
+}
+
+nav ul li a {
+	padding: 10px 0;
+
+	border-bottom: none;
+	text-decoration: underline;
+}
+
+nav span {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	text-wrap: nowrap;
+
+	color: grey;
+}
+
+
+@media only screen and (max-width: 1600px) {
+	.gate img {
+		width: 550px;
+	}
+
+	.poem {
+		margin-left: 70px;
+	}
+
+	.poem .glitch{
+		font-size: 3rem;
+	}
+
+	.horizon {
+		width: 400px;
+		margin: 0 0 0 50px;
+	}
+
+	.nudesign h3 {
+		font-size: 3rem;
+	}
+}
+
+@media only screen and (max-width: 1400px) {
+	.gate img {
+		width: 400px;
+	}
+
+	.horizon {
+		width: 300px;
+		margin-bottom: 200px;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	main {
+		flex-wrap: wrap;
+	}
+
+	main section {
+		justify-content: unset;
+	}
+
+	.nudesign, aside {
+		height: unset;
+	}
+
+	.horizon {
+		margin-bottom: 0;
+	}
+
+	nav {
+		flex-direction: row;
+		margin: 30px auto 0;
+	}
+
+	nav ul li {
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	main {
+		align-items: unset;
+	}
+
+	main section {
+		flex-direction: row;
+		height: min-content;
+		width: 100%;
+		justify-content: space-evenly;
+	}
+
+	.gate {
+		margin: 80px 0 0;
+	}
+
+	aside {
+		flex-direction: row;
+		width: 100%;
+	}
+
+	.poem {
+		margin: 0;
+	}
+
+	.horizon {
+		margin: 0;
+		width: 200px;
+	}
+
+	.nudesign h3 {
+		writing-mode: vertical-lr;
+		text-orientation: sideways-right;
+		margin: 80px 0 0 50px;
+		height: fit-content;
+		font-size: 2.5rem;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.poem .glitch {
+		font-size: 2rem;
+		width: fit-content;
+		margin: 0 auto 0 0;
+	}
+
+	.gate img {
+		width: 300px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.nudesign h3 {
+		margin: 40px 0 0;
+	}
+
+	.gate img {
+		width: 250px;
+	}
+
+	.gate h1 {
+		font-size: 1rem;
+	}
+	
+	aside {
+		justify-content: space-around;
+	}
+
+	.poem {
+		display: flex;
+		height: fit-content;
+		width: fit-content;
+		margin: auto 0 0 20px;
+		flex-direction: row;
+
+		transform: rotate(180deg) translateX(1);
+	}
+
+	.poem .glitch {
+		writing-mode: vertical-rl;
+		text-orientation:sideways-right;
+
+		transform: rotate(180deg);
+	}
+
+	.horizon {
+		margin-right: 20px;
+	}
+
+	nav ul li {
+		background-color: rgba(0,0,0,0.2);
+		border: 1px solid grey;
+	}
+}
+
+@media only screen and (max-width: 300px) {
+	main section, aside, .poem {
+		flex-direction: column;
+	}
+
+	.gate {
+		margin: 20px 0 0 auto;
+	}
+
+	.gate h1 {
+		text-align: right;
+	}
+
+	.nudesign h3, .poem .glitch {
+		writing-mode: unset;
+		text-orientation: unset;
+	}
+
+	.nudesign h3 {
+		font-size: 2rem;
+		margin: 20px 0 20px auto;
+	}
+
+	.poem .glitch {
+		transform: scale(-1);
+	}
+
+	.horizon {
+		margin: 20px 0 0 auto;
+		width: 250px;
+	}
+
+	nav span {
+		font-size: smaller;
+	}
+}

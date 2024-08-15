@@ -30,17 +30,21 @@ else
   /bin/merge_jekyll_configs
 fi
 
+# Merging Gemfiles if needed
+echo "Checking for Gemfile merge..."
+if test -f "${SOURCE_DIRECTORY}/Gemfile"; then
+  /bin/merge_gemfiles "${SOURCE_DIRECTORY}./Gemfile"
+else
+  cp /Gemfile "${SOURCE_DIRECTORY}/Gemfile"
+fi
+
 # Change to working directory 
 cd "${GITHUB_WORKSPACE}" || exit
 
 # Install ruby dependencies, merging Gemfiles if needed
 if test -f ./Gemfile; then
-  echo "Installing ruby dependencies..."
-  /bin/merge_gemfiles ./Gemfile
-else
-  cp /Gemfile ./Gemfile
+  bundle install
 fi
-bundle install
 
 # Install node dependencies
 if test -f ./package.json; then

@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.5",
+    "postcss": "^8.4.41"
+  },
+  "devDependencies": {
+    "stylelint": "15.11.0"
+  }
+}

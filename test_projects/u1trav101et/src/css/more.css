@@ -1,0 +1,45 @@
+---
+---
+
+h2 {
+    font-size: 3rem;
+}
+
+ul {
+    margin: 50px 0 0 20px;
+
+    list-style: none;
+}
+
+ul li {
+    padding-bottom: 20px;
+}
+
+ul li:first-of-type {
+    margin-top: 40px;
+}
+
+ul span, ul span a {
+    font-size: 2rem;
+}
+
+ul li a {
+    color: red;
+    border-bottom: 1px solid red;
+}
+
+ul li a:hover {
+    color: darkred;
+}
+
+.title {
+    display: flex;
+
+    align-items: center;
+}
+
+.title img {
+    width: 66px;
+    height: 66px;
+    padding-right: 20px;
+}

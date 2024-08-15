@@ -1,0 +1,64 @@
+---
+---
+
+main {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+main section {
+    margin: auto 0;
+    padding: 0 10%;
+    display: flex;
+    align-items: center;
+}
+
+p {
+    margin-left: 40px;
+    font-size: 2rem;
+    width: 80%;
+}
+
+span {
+    margin-left: 40px;
+    font-size: 3rem;
+    font-family: "eb_garamond_italic";
+}
+
+li {
+    padding: 10px 0;
+
+    list-style: none;
+}
+
+li a {
+    width: fit-content;
+}
+
+li img {
+    height: 28px;
+    max-width: 28px;
+}
+
+body img {
+    margin: auto 0;
+    object-fit: contain;
+}
+
+@media only screen and (max-width: 1000px) {
+    main section {
+        flex-direction: column;
+    }
+
+    .self-inversion {
+        margin: 50px 0;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    span {
+        font-size: 2rem;
+    }
+}
