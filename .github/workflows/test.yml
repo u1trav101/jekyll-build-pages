@@ -45,6 +45,7 @@ jobs:
           - readme
           - simple
           - themes
+          - u1trav101et
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
