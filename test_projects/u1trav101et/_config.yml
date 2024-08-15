@@ -1,6 +1,4 @@
 
-source:
-    ./src
 plugins:
     - jekyll-minifier
     - jekyll-postcss
