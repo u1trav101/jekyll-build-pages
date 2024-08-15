@@ -76,7 +76,7 @@ else
   FUTURE=''
 fi
 
-{ cd "$PAGES_GEM_HOME" || { echo "::error::pages gem not found"; exit 1; }; }
+pwd
 
 # Run the command, capturing the output, allowing additional jekyll config if it exists
 echo "Building..."
