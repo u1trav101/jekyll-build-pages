@@ -43,7 +43,7 @@ fi
 if test -f "${GITHUB_WORKSPACE}/package.json"; then
   echo "Installing node dependencies..."
   mkdir "${GITHUB_WORKSPACE}/node_modules"
-  npm install --prefix "${GITHUB_WORKSPACE}/node_modules"
+  npm install --prefix "${GITHUB_WORKSPACE}"
 fi
 
 ls -a
