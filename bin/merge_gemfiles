@@ -3,8 +3,8 @@ import sys
 
 
 print(f"Gemfile found at {sys.argv[1]}, merging with github-pages Gemfile...")
-with open(sys.argv[1], "w") as file:
-    file = file.read() + """
+with open(sys.argv[1], "a") as file:
+    file.write("""
 gem "jekyll"
 gem "jekyll-coffeescript"
 gem "jekyll-default-layout"
@@ -17,4 +17,4 @@ gem "jekyll-relative-links"
 gem "jekyll-remote-theme"
 gem "jekyll-titles-from-headings"
 gem "jekyll-theme-minimal"
-    """
+    """)
