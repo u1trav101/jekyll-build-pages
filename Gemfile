@@ -21,4 +21,5 @@ gem "jekyll-theme-minimal"
 # additional dependencies required for testing
 gem "jekyll-include-cache"
 gem "jekyll-octicons"
+gem "jekyll-postcss"
 gem "jemoji"

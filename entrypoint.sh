@@ -31,6 +31,9 @@ else
   /bin/merge_configs
 fi
 
+# Change to working directory 
+cd "${GITHUB_WORKSPACE}" || exit
+
 # Install ruby dependencies
 if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
   echo "Installing ruby dependencies..."
@@ -40,7 +43,8 @@ fi
 # Install node dependencies
 if test -f "${GITHUB_WORKSPACE}/package.json"; then
   echo "Installing node dependencies..."
-  npm install
+  mkdir "${GITHUB_WORKSPACE}/node_modules"
+  npm install --prefix "${GITHUB_WORKSPACE}"
 fi
 
 # Set environment variables required by supported plugins
@@ -63,8 +67,6 @@ if [ "$INPUT_FUTURE" = 'true' ]; then
 else
   FUTURE=''
 fi
-
-{ cd "$PAGES_GEM_HOME" || { echo "::error::pages gem not found"; exit 1; }; }
 
 # Run the command, capturing the output, allowing additional jekyll config if it exists
 echo "Building..."

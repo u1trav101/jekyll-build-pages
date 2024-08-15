@@ -36,14 +36,15 @@ jobs:
     strategy:
       matrix:
         test:
-          - simple
-          - readme
-          - octicons
-          - mojombo
-          - themes
-          - jekyll-include-cache
           - future-false
           - future-true
+          - jekyll-include-cache
+          - mojombo
+          - octicons
+          - postcss
+          - readme
+          - simple
+          - themes
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
