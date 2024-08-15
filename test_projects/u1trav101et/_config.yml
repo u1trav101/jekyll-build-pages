@@ -2,6 +2,7 @@
 plugins:
     - jekyll-minifier
     - jekyll-postcss
+theme: null
 jekyll-minifier:
     exclude: "*.css"
     compress_css: false

@@ -37,7 +37,6 @@ if test -f "$SOURCE_DIRECTORY/Gemfile"; then
 else
   mv /Gemfile "$SOURCE_DIRECTORY/Gemfile"
 fi
-cat "${SOURCE_DIRECTORY}/Gemfile"
 
 # Change to working directory 
 cd "$SOURCE_DIRECTORY" || exit
