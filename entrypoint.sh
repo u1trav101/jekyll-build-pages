@@ -32,8 +32,6 @@ else
 fi
 
 cd "${GITHUB_WORKSPACE}"
-ls -a
-pwd
 
 # Install ruby dependencies
 if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
@@ -44,8 +42,12 @@ fi
 # Install node dependencies
 if test -f "${GITHUB_WORKSPACE}/package.json"; then
   echo "Installing node dependencies..."
-  npm install
+  mkdir "${GITHUB_WORKSPACE}/node_modules"
+  npm install --prefix "${GITHUB_WORKSPACE}/node_modules"
 fi
+
+ls -a
+pwd
 
 # Set environment variables required by supported plugins
 export JEKYLL_ENV="production"
