@@ -33,7 +33,7 @@ fi
 # Merging Gemfiles if needed
 echo "Checking for Gemfile merge..."
 if test -f "$SOURCE_DIRECTORY/Gemfile"; then
-  /bin/merge_gemfiles "${SOURCE_DIRECTORY}./Gemfile"
+  /bin/merge_gemfiles "$SOURCE_DIRECTORY./Gemfile"
 else
   mv /Gemfile "$SOURCE_DIRECTORY/Gemfile"
 
@@ -51,7 +51,7 @@ fi
 if test -f ./package.json; then
   echo "Installing node dependencies..."
   mkdir ./node_modules
-  npm install --prefix "${GITHUB_WORKSPACE}"
+  npm install --prefix "$SOURCE_DIRECTORY"
 fi
 
 # Set environment variables required by supported plugins
