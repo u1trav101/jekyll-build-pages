@@ -31,6 +31,7 @@ else
   /bin/merge_configs
 fi
 
+# Change to working directory 
 cd "${GITHUB_WORKSPACE}" || exit
 
 # Install ruby dependencies
@@ -45,15 +46,6 @@ if test -f "${GITHUB_WORKSPACE}/package.json"; then
   mkdir "${GITHUB_WORKSPACE}/node_modules"
   npm install --prefix "${GITHUB_WORKSPACE}"
 fi
-
-echo "Listing all..."
-ls -a
-echo "Listing node_modules"
-ls -a ./node_modules
-echo "Listing postcss"
-ls -a ./node_modules/postcss
-echo "pwd"
-pwd
 
 # Set environment variables required by supported plugins
 export JEKYLL_ENV="production"
@@ -75,8 +67,6 @@ if [ "$INPUT_FUTURE" = 'true' ]; then
 else
   FUTURE=''
 fi
-
-pwd
 
 # Run the command, capturing the output, allowing additional jekyll config if it exists
 echo "Building..."
