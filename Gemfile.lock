@@ -105,6 +105,7 @@ GEM
     jekyll-optional-front-matter (0.3.2)
       jekyll (>= 3.0, < 5.0)
     jekyll-paginate (1.1.0)
+    jekyll-postcss (0.5.0)
     jekyll-readme-index (0.3.0)
       jekyll (>= 3.0, < 5.0)
     jekyll-relative-links (0.7.0)
@@ -271,6 +272,7 @@ DEPENDENCIES
   jekyll-octicons
   jekyll-optional-front-matter
   jekyll-paginate
+  jekyll-postcss
   jekyll-readme-index
   jekyll-relative-links
   jekyll-remote-theme
