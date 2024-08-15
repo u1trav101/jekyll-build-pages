@@ -32,6 +32,8 @@ else
 fi
 
 cd "${GITHUB_WORKSPACE}"
+ls -a
+pwd
 
 # Install ruby dependencies
 if test -f "${GITHUB_WORKSPACE}/Gemfile"; then
