@@ -47,7 +47,7 @@ if test -f "${GITHUB_WORKSPACE}/package.json"; then
 fi
 
 ls -a
-ls -a ./node_modules/postcss
+ls -a ./node_modules
 pwd
 
 # Set environment variables required by supported plugins
